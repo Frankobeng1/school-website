@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>School Admissions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('images/school-bg.jpg') no-repeat center center/cover;
+            background-attachment: fixed;
+            color: #fff;
+        }
+        
+        header {
+            background: url('images/school-banner.jpg') no-repeat center center/cover;
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+            background-attachment: scroll;
+        }
+        
+        nav {
+            background-color: rgba(0, 64, 128, 0.85);
+            padding: 12px;
+            text-align: center;
+        }
+        
+        nav a {
+            margin: 0 12px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #ffcc00;
+        }
+        
+        main {
+            padding: 30px;
+            line-height: 1.7;
+            background: rgba(255, 255, 255, 0.15);
+            /* semi-transparent glass effect */
+            border-radius: 16px;
+            margin: 40px auto;
+            max-width: 1100px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+            /* soft blur behind box */
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards;
+        }
+        
+        section {
+            margin-bottom: 40px;
+        }
+        
+        h2,
+        h3 {
+            color: #00bfff;
+        }
+        
+        .btn-download {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #004080;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+        }
+        
+        .btn-download:hover {
+            background-color: #002b5c;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 191, 255, 0.5);
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        th,
+        td {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            text-align: left;
+        }
+        
+        th {
+            background: rgba(0, 64, 128, 0.85);
+            color: white;
+        }
+        
+        details {
+            margin-bottom: 12px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 64, 128, 0.9);
+            color: white;
+            margin-top: 40px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        
+        .marquee p {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 15s linear infinite;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Admissions</h1>
+        <p>Shaping Futures Through Opportunity</p>
+    </header>
+
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="admissions.html">Admissions</a>
+        <a href="academics.html">Academics</a>
+        <a href="contact.html">Contact</a>
+        <a href="register.html">Register</a>
+        <a href="reference.html">Reference</a>
+        <a href="staff.html">Staff</a>
+        <a href="login.html">Student Portal</a>
+    </nav>
+
+    <main>
+        <h2>Our Admissions</h2>
+        <p>Founded in 1998, My School has grown to become one of the best institutions in the region...</p>
+
+        <h3>📌 Admission Information Overview</h3>
+        <table>
+            <tr>
+                <th colspan="2">Admission Requirements</th>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <ul>
+                        <li>Completed application form</li>
+                        <li>Two passport-size photographs</li>
+                        <li>Original and photocopies of certificates</li>
+                        <li>Proof of age (Birth Certificate/National ID)</li>
+                        <li>Application fee (GHS 50.00)</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <th colspan="2">Programs Offered</th>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <ul>
+                        <li>Basic Education (JHS)</li>
+                        <li>Senior High School (Science, Business, General Arts, Technical)</li>
+                        <li>Professional IT Certifications</li>
+                        <li>Adult Evening Classes</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <th colspan="2">Admission Timeline - 2025</th>
+            </tr>
+            <tr>
+                <td><strong>Application Opens:</strong></td>
+                <td>May 1, 2025</td>
+            </tr>
+            <tr>
+                <td><strong>Deadline:</strong></td>
+                <td>August 31, 2025</td>
+            </tr>
+            <tr>
+                <td><strong>Entrance Exam:</strong></td>
+                <td>September 10, 2025</td>
+            </tr>
+            <tr>
+                <td><strong>Results Released:</strong></td>
+                <td>September 15, 2025</td>
+            </tr>
+            <tr>
+                <td><strong>Orientation:</strong></td>
+                <td>October 1, 2025</td>
+            </tr>
+
+            <tr>
+                <th colspan="2">Download Prospectus</th>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align:center;">
+                    <a href="pdfs/ridge-school-prospectus-2020.pdf" download class="btn-download">📥 Click Here to Download PDF</a>
+                </td>
+            </tr>
+
+            <tr>
+                <th colspan="2">FAQs (Frequently Asked Questions)</th>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <details>
+                        <summary>Can I apply online?</summary>
+                        <p>Yes! Fill out our registration form and upload your documents.</p>
+                    </details>
+                    <details>
+                        <summary>Are there scholarship opportunities?</summary>
+                        <p>Yes, based on academic merit and need.</p>
+                    </details>
+                    <details>
+                        <summary>Is there an age limit?</summary>
+                        <p>Applicants must be between 10 and 25 years old.</p>
+                    </details>
+                </td>
+            </tr>
+
+            <tr>
+                <th colspan="2">Why Choose Us?</th>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align:center;">
+                    <img src="images/admissions-banner.jpg" alt="Admissions Banner" style="max-width:100%; height:auto; border-radius:10px; box-shadow:0 4px 12px rgba(0,191,255,0.3);">
+                </td>
+            </tr>
+        </table>
+    </main>
+
+    <footer>
+        <div class="marquee">
+            <p>&copy; 2025 My School. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Our Staff - My School</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('images/school-bg.jpg') no-repeat center center/cover;
+            background-attachment: fixed;
+        }
+
+        header {
+            background: url('images/school-banner.jpg') no-repeat center center/cover;
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        nav {
+            background-color: rgba(0,64,128,0.85);
+            padding: 12px;
+            text-align: center;
+        }
+
+        nav a {
+            margin: 0 12px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffcc00;
+        }
+
+        .staff-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 40px 20px;
+            max-width: 1400px;
+            margin: auto;
+        }
+
+        .staff-card {
+            background: rgba(255,255,255,0.9);
+            border-radius: 12px;
+            width: 300px;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s forwards;
+        }
+
+        .staff-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .staff-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .staff-info h3 {
+            margin: 10px 0 5px;
+        }
+
+        .contact-btn {
+            margin-top: 10px;
+            background-color: #004080;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 8px;
+            display: inline-block;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .contact-btn:hover {
+            background-color: #002b5c;
+            transform: scale(1.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background-color: rgba(0,64,128,0.9);
+            color: white;
+            margin-top: 40px;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Meet Our Staff</h1>
+    <p>Dedicated Educators Shaping the Future</p>
+</header>
+
+<nav>
+    <a href="home.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="admissions.html">Admissions</a>
+    <a href="academics.html">Academics</a>
+    <a href="contact.html">Contact</a>
+    <a href="register.html">Register</a>
+    <a href="reference.html">Reference</a>
+    <a href="staff.html">Staff</a>
+    <a href="login.html">Student Portal</a>
+</nav>
+
+<main class="staff-container">
+
+<!-- Staff Cards: 20 entries -->
+<!-- Instead of repeating animation-delay manually, we can use inline style generation in JS or CSS nth-child, but keeping inline for simplicity -->
+<div class="staff-card" style="animation-delay:0.1s;">
+    <img src="images/staff1.jpg" alt="Mr. Kwame Asante">
+    <div class="staff-info">
+        <h3>Mr. Kwame Asante</h3>
+        <p><strong>Course:</strong> Mathematics</p>
+        <p><strong>Experience:</strong> 12 years</p>
+        <p><strong>Email:</strong> kwame.asante@myschool.edu.gh</p>
+        <a class="contact-btn" href="mailto:kwame.asante@myschool.edu.gh">Contact</a>
+    </div>
+</div>
+
+<div class="staff-card" style="animation-delay:0.2s;">
+    <img src="images/staff2.jpg" alt="Ms. Ama Owusu">
+    <div class="staff-info">
+        <h3>Ms. Ama Owusu</h3>
+        <p><strong>Course:</strong> English Literature</p>
+        <p><strong>Experience:</strong> 9 years</p>
+        <p><strong>Email:</strong> ama.owusu@myschool.edu.gh</p>
+        <a class="contact-btn" href="mailto:ama.owusu@myschool.edu.gh">Contact</a>
+    </div>
+</div>
+
+<!-- Repeat for staff3 → staff20 with increasing animation-delay by 0.1s each -->
+<!-- For brevity, I'll summarize staff cards generation -->
+
+<script>
+const staff = [
+  {name:"Dr. Yaw Mensah", course:"Biology", exp:"15 years", email:"yaw.mensah@myschool.edu.gh", img:"images/staff3.jpg"},
+  {name:"Ms. Adjoa Boateng", course:"Chemistry", exp:"10 years", email:"adjoa.boateng@myschool.edu.gh", img:"images/staff4.jpg"},
+  {name:"Mr. Joseph Tetteh", course:"Physics", exp:"8 years", email:"joseph.tetteh@myschool.edu.gh", img:"images/staff5.jpg"},
+  {name:"Ms. Nana Akua", course:"ICT", exp:"7 years", email:"nana.akua@myschool.edu.gh", img:"images/staff6.jpg"},
+  {name:"Mr. Kofi Osei", course:"Economics", exp:"11 years", email:"kofi.osei@myschool.edu.gh", img:"images/staff7.jpg"},
+  {name:"Ms. Abena Frimpong", course:"History", exp:"6 years", email:"abena.frimpong@myschool.edu.gh", img:"images/staff8.jpg"},
+  {name:"Mr. Daniel Adu", course:"Geography", exp:"9 years", email:"daniel.adu@myschool.edu.gh", img:"images/staff9.jpg"},
+  {name:"Ms. Grace Agyapong", course:"Business Studies", exp:"5 years", email:"grace.agyapong@myschool.edu.gh", img:"images/staff10.jpg"},
+  {name:"Mr. Eric Mensah", course:"Music", exp:"8 years", email:"eric.mensah@myschool.edu.gh", img:"images/staff11.jpg"},
+  {name:"Ms. Abigail Darko", course:"Art", exp:"7 years", email:"abigail.darko@myschool.edu.gh", img:"images/staff12.jpg"},
+  {name:"Mr. Samuel Owusu", course:"Physical Education", exp:"10 years", email:"samuel.owusu@myschool.edu.gh", img:"images/staff13.jpg"},
+  {name:"Ms. Lydia Addo", course:"French", exp:"6 years", email:"lydia.addo@myschool.edu.gh", img:"images/staff14.jpg"},
+  {name:"Mr. Kojo Boadu", course:"ICT", exp:"9 years", email:"kojo.boadu@myschool.edu.gh", img:"images/staff15.jpg"},
+  {name:"Ms. Priscilla Nyarko", course:"Sociology", exp:"7 years", email:"priscilla.nyarko@myschool.edu.gh", img:"images/staff16.jpg"},
+  {name:"Mr. Benedict Agyeman", course:"Economics", exp:"12 years", email:"benedict.agyeman@myschool.edu.gh", img:"images/staff17.jpg"},
+  {name:"Ms. Esi Bediako", course:"Geography", exp:"8 years", email:"esi.bediako@myschool.edu.gh", img:"images/staff18.jpg"},
+  {name:"Mr. Kwesi Darko", course:"Music", exp:"6 years", email:"kwesi.darko@myschool.edu.gh", img:"images/staff19.jpg"},
+  {name:"Ms. Sandra Ofori", course:"Art", exp:"5 years", email:"sandra.ofori@myschool.edu.gh", img:"images/staff20.jpg"},
+];
+
+const container = document.querySelector(".staff-container");
+staff.forEach((s, i)=>{
+    container.innerHTML += `
+    <div class="staff-card" style="animation-delay:${0.1*(i+2)}s;">
+        <img src="${s.img}" alt="${s.name}">
+        <div class="staff-info">
+            <h3>${s.name}</h3>
+            <p><strong>Course:</strong> ${s.course}</p>
+            <p><strong>Experience:</strong> ${s.exp}</p>
+            <p><strong>Email:</strong> ${s.email}</p>
+            <a class="contact-btn" href="mailto:${s.email}">Contact</a>
+        </div>
+    </div>`;
+});
+</script>
+
+</main>
+
+<footer>
+   <marquee><p>&copy; 2025 My School. All rights reserved.</p></marquee>
+</footer>
+
+</body>
+</html>

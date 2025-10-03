@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin:0; 
+            padding:0; 
+            /* ✅ Background image */
+            background: url("images/school-bg.jpg") no-repeat center center fixed; 
+            background-size: cover;
+            display:flex; 
+            flex-direction:column; 
+            min-height:100vh; 
+            color:#fff;
+        }
+
+        nav {
+            background: rgba(0, 64, 128, 0.7); /* ✅ Transparent nav */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding:10px;
+            text-align:center;
+        }
+        nav a {
+            color:white;
+            text-decoration:none;
+            margin:0 15px;
+            font-weight:bold;
+        }
+        nav a:hover {
+            text-decoration:underline;
+        }
+
+        .dashboard {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        /* ✅ Blended glass effect for all sections */
+        .section {
+            background: rgba(255, 255, 255, 0.15); 
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 25px rgba(0,0,0,0.3);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            color: #fff;
+        }
+
+        th, td {
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 10px;
+            text-align: left;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .btn {
+            background-color: #004080;
+            color: white;
+            padding: 8px 14px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #002b5c;
+        }
+
+        /* ✅ Footer glass style */
+        footer {
+            background: rgba(0, 64, 128, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color:white;
+            text-align:center;
+            padding:15px;
+            margin-top:auto;
+            border-top: 1px solid rgba(255,255,255,0.3);
+        }
+        footer a {
+            color:white;
+            margin:0 5px;
+            text-decoration:none;
+        }
+        footer a:hover {
+            text-decoration:underline;
+        }
+    </style>
+</head>
+<body>
+<script>
+    const currentStudent = JSON.parse(localStorage.getItem("currentStudent"));
+    if (!currentStudent) {
+        alert("You must log in first.");
+        window.location.href = "login.html";
+    }
+</script>
+
+<nav>
+    <a href="home.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="admissions.html">Admissions</a>
+    <a href="academics.html">Academics</a>
+    <a href="contact.html">Contact</a>
+    <a href="register.html">Register</a>
+    <a href="reference.html">Reference</a>
+    <a href="staff.html">Staff</a>
+        <a href="login.html">Student Portal</a>
+</nav>
+
+<p style="text-align:center;">
+  <a href="home.html" class="btn">← Back to Home</a>
+</p>
+
+<main class="dashboard">
+    <div class="section">
+        <h2>👤 Student Profile</h2>
+        <img id="profilePic" src="images/default-profile.png" alt="Profile Picture" style="width:100px; border-radius:50%; margin-bottom:10px;">
+        <br>
+        <input type="file" id="uploadPic" accept="image/*">
+        <br>
+        <button class="btn" onclick="removeProfilePic()">Remove Picture</button>
+
+        <p><strong>Name:</strong> <span id="studentNameHere"></span></p>
+        <p><strong>Program:</strong> Computer Science</p>
+        <p><strong>Year:</strong> 3</p>
+        <p><strong>Student ID:</strong> <span id="studentIDHere"></span></p>
+    </div>
+
+    <div class="section">
+        <h2>📚 Grades</h2>
+        <table>
+            <tr><th>Subject</th><th>Grade</th></tr>
+            <tr><td>Mathematics</td><td>A</td></tr>
+            <tr><td>English</td><td>B+</td></tr>
+            <tr><td>ICT</td><td>A-</td></tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>📢 Announcements</h2>
+        <ul>
+            <li>🗓️ Mid-Term Exams begin on September 16, 2025.</li>
+            <li>📣 All students must renew their ID cards by August 31.</li>
+            <li>🧪 Science Fair registration deadline is August 15.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>📅 Download Timetable</h2>
+        <p><a href="downloads/timetable.pdf" class="btn" download>Download Timetable (PDF)</a></p>
+    </div>
+
+    <div class="section" style="text-align:center;">
+        <button class="btn" onclick="logout()">Log Out</button>
+    </div>
+</main>
+
+<footer>
+  <marquee>  <p>
+        &copy; 2025 Nitro Ridge School. All rights reserved. 
+        <a href="https://wa.me/233257346810" target="_blank">WhatsApp</a> | 
+        <a href="https://facebook.com" target="_blank">Facebook</a> | 
+        <a href="https://instagram.com" target="_blank">Instagram</a>
+    </p></marquee>
+</footer>
+
+<script>
+  document.getElementById("studentNameHere").textContent = currentStudent.name;
+  document.getElementById("studentIDHere").textContent = currentStudent.studentID;
+
+  const savedImage = localStorage.getItem("profilePic_" + currentStudent.studentID);
+  if (savedImage) {
+    document.getElementById("profilePic").src = savedImage;
+  }
+
+  document.getElementById("uploadPic").addEventListener("change", function() {
+    const file = this.files[0];
+    if (file && file.type.startsWith("image/")) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const imageData = e.target.result;
+        document.getElementById("profilePic").src = imageData;
+        localStorage.setItem("profilePic_" + currentStudent.studentID, imageData);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      alert("Please upload a valid image file.");
+    }
+  });
+
+  function logout() {
+    localStorage.removeItem("currentStudent");
+    window.location.href = "login.html";
+  }
+
+  function removeProfilePic() {
+    localStorage.removeItem("profilePic_" + currentStudent.studentID);
+    document.getElementById("profilePic").src = "images/default-profile.png";
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Nitro Ridge School</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('images/school-bg.jpg') no-repeat center center/cover;
+            background-attachment: fixed;
+            color: #fff;
+        }
+        
+        header {
+            background: url('images/school-banner.jpg') no-repeat center center/cover;
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+            background-attachment: scroll;
+        }
+        
+        nav {
+            background-color: rgba(0, 64, 128, 0.85);
+            padding: 12px;
+            text-align: center;
+        }
+        
+        nav a {
+            margin: 0 12px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #ffcc00;
+        }
+        
+        main {
+            padding: 30px;
+            line-height: 1.7;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            margin: 40px auto;
+            max-width: 1100px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards;
+        }
+        
+        section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        h2 {
+            color: #00bfff;
+        }
+        
+        form label {
+            display: block;
+            margin-top: 10px;
+        }
+        
+        form input,
+        form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            transition: 0.3s;
+        }
+        
+        form input:focus,
+        form textarea:focus {
+            outline: none;
+            border: 2px solid #00bfff;
+            box-shadow: 0 0 10px #00bfff;
+        }
+        
+        form button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #004080;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            position: relative;
+        }
+        
+        form button:hover {
+            background-color: #002b5c;
+            transform: scale(1.05);
+        }
+        
+        .spinner {
+            display: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #fff;
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: translateY(-50%) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-50%) rotate(360deg);
+            }
+        }
+        
+        iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+            border-radius: 8px;
+        }
+        
+        .social a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #004080;
+            font-weight: bold;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        
+        .social a:hover {
+            color: #ffcc00;
+        }
+        
+        .social i {
+            margin-right: 6px;
+        }
+        
+        #success-message {
+            color: #00ff88;
+            opacity: 0;
+            margin-top: 10px;
+            font-weight: bold;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        #success-message.show {
+            opacity: 1;
+        }
+        
+        .faq button {
+            width: 100%;
+            text-align: left;
+            padding: 12px;
+            border: none;
+            background: rgba(0, 64, 128, 0.8);
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 8px;
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+        
+        .faq button:hover {
+            background: #002b5c;
+        }
+        
+        .answer {
+            display: none;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            margin-bottom: 8px;
+            border-radius: 6px;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-5px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        footer {
+            text-align: center;
+            padding: 25px;
+            background-color: rgba(0, 64, 128, 0.9);
+            color: white;
+            margin-top: 40px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        
+        footer p {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 15s linear infinite;
+        }
+        
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        /* 🔹 Extra styles for new features */
+        
+        .trust .badges div {
+            margin: 8px 0;
+            padding: 10px;
+            background: rgba(0, 128, 255, 0.2);
+            border-radius: 8px;
+        }
+        
+        .hours ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .hours li {
+            padding: 6px;
+        }
+        /* Fake Chat Widget */
+        
+        #chatWidget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 260px;
+            background: rgba(0, 0, 50, 0.85);
+            color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            z-index: 999;
+        }
+        
+        .chat-header {
+            background: #003366;
+            padding: 10px;
+            font-weight: bold;
+        }
+        
+        .chat-body {
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 8px;
+        }
+        
+        #chatWidget input {
+            width: 100%;
+            border: none;
+            padding: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Contact Us</h1>
+        <p>We’re Here to Help and Connect</p>
+    </header>
+
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="admissions.html">Admissions</a>
+        <a href="academics.html">Academics</a>
+        <a href="contact.html">Contact</a>
+        <a href="register.html">Register</a>
+        <a href="reference.html">Reference</a>
+        <a href="staff.html">Staff</a>
+        <a href="login.html">Student Portal</a>
+    </nav>
+
+    <main>
+        <section>
+            <h2>📍 Our Location</h2>
+            <p>You can visit us at our main campus anytime from 8:00am to 4:00pm on weekdays.</p>
+            <iframe src="https://maps.google.com/maps?q=Accra%20Ghana&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+        </section>
+
+        <section>
+            <h2>📬 Contact Details</h2>
+            <p><strong>Phone:</strong> +233 55 862 7995</p>
+            <p><strong>WhatsApp:</strong>
+                <i class="fab fa-whatsapp" style="color:green; font-size:20px; margin-right:8px;"></i> +233 25 734 6810
+            </p>
+            <p><strong>Email:</strong> frankobeng2222@gmail.com</p>
+            <p><strong>Address:</strong> My School Road, Sunyani, Ghana</p>
+        </section>
+
+        <section>
+            <h2>✉️ Send Us a Message</h2>
+            <form id="contact-form" action="https://formspree.io/f/xblzrkyz" method="POST">
+
+                <label for="name">Your Full Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Your Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit">
+                <div class="spinner" id="spinner"></div>
+                Send Message
+            </button>
+                <p id="success-message">✅ Thank you! Your message has been sent.</p>
+            </form>
+        </section>
+
+        <!-- 🕒 Opening Hours -->
+        <section class="hours">
+            <h2>🕒 Opening Hours</h2>
+            <ul>
+                <li>Mon - Fri: 8:00am - 5:00pm</li>
+                <li>Sat: 9:00am - 2:00pm</li>
+                <li>Sun: Closed</li>
+            </ul>
+        </section>
+
+        <!-- 🏆 Trust Badges -->
+        <section class="trust">
+            <h2>🏅 Why Choose Us?</h2>
+            <div class="badges">
+                <div>✔️ Accredited by GES</div>
+                <div>✔️ 10+ Years of Excellence</div>
+                <div>✔️ 95% Success Rate</div>
+            </div>
+        </section>
+
+        <!-- 🔹 FAQ Accordion -->
+        <section>
+            <h2>🤔 Frequently Asked Questions</h2>
+            <div class="faq">
+                <button>How do I apply for admission?</button>
+                <div class="answer">Visit our Admissions page and fill out the registration form.</div>
+
+                <button>Do you offer boarding facilities?</button>
+                <div class="answer">Yes, we provide boarding for both boys and girls.</div>
+
+                <button>What subjects are available?</button>
+                <div class="answer">Science, Business, General Arts, ICT, and more.</div>
+            </div>
+        </section>
+
+        <section class="social">
+            <h2>🌐 Follow Us on Social Media</h2>
+            <p>
+                <a href="https://www.facebook.com/DragLord" target="_blank">
+                    <i class="fab fa-facebook"></i> Facebook
+                </a>
+                <a href="https://www.instagram.com/dl.reaper" target="_blank">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+                <a href="https://www.youtube.com/@KelvinBoafo" target="_blank">
+                    <i class="fab fa-youtube"></i> YouTube
+                </a>
+                <a href="https://wa.me/233257346810" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+            </p>
+        </section>
+    </main>
+
+    <!-- 💬 Fake Chat Widget -->
+    <div id="chatWidget">
+        <div class="chat-header">💬 Live Chat</div>
+        <div class="chat-body">
+            <p><b>Admin:</b> Hello! How can we help you today?</p>
+        </div>
+        <input type="text" placeholder="Type a message..." />
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Nitro Ridge School. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // 🔹 Contact Form
+        const form = document.getElementById('contact-form');
+        const successMessage = document.getElementById('success-message');
+        const spinner = document.getElementById('spinner');
+        const button = form.querySelector("button");
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            spinner.style.display = "inline-block";
+            button.disabled = true;
+
+            fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                spinner.style.display = "none";
+                button.disabled = false;
+                if (response.ok) {
+                    successMessage.classList.add('show');
+                    form.reset();
+                } else {
+                    alert('Oops! There was a problem sending your message.');
+                }
+            }).catch(error => {
+                spinner.style.display = "none";
+                button.disabled = false;
+                alert('Oops! There was a problem sending your message.');
+            });
+        });
+
+        // 🔹 FAQ Accordion
+        const buttons = document.querySelectorAll(".faq button");
+        buttons.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const answer = btn.nextElementSibling;
+                answer.style.display = answer.style.display === "block" ? "none" : "block";
+            });
+        });
+
+        // 🕒 Opening Hours Highlight
+        const days = document.querySelectorAll(".hours li");
+        const today = new Date().getDay(); // 0=Sun
+        if (today > 0 && today < 7) {
+            days[today - 1].style.color = "#00ffcc";
+            days[today - 1].style.fontWeight = "bold";
+        }
+
+        // 🔹 Fake Chat Widget Functionality
+        const chatInput = document.querySelector("#chatWidget input");
+        const chatBody = document.querySelector(".chat-body");
+
+        chatInput.addEventListener("keypress", function(e) {
+            if (e.key === "Enter" && chatInput.value.trim() !== "") {
+                const userMsg = chatInput.value.trim();
+
+                // Add user message
+                const userBubble = document.createElement("p");
+                userBubble.innerHTML = `<b>You:</b> ${userMsg}`;
+                chatBody.appendChild(userBubble);
+
+                // Auto scroll to bottom
+                chatBody.scrollTop = chatBody.scrollHeight;
+
+                // Clear input
+                chatInput.value = "";
+
+                // Fake admin reply after 1s
+                setTimeout(() => {
+                    const adminBubble = document.createElement("p");
+                    adminBubble.innerHTML = `<b>Admin:</b> Thank you for your message!`;
+                    chatBody.appendChild(adminBubble);
+                    chatBody.scrollTop = chatBody.scrollHeight;
+                }, 1000);
+            }
+        });
+    </script>
+
+</body>
+
+</html>

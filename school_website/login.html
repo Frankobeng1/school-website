@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Login</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Body & background */
+        body { 
+            font-family: Arial, sans-serif; 
+            margin:0; 
+            padding:0; 
+            background: url("images/school-bg.jpg") no-repeat center center fixed; 
+            background-size: cover;
+            display:flex;
+            flex-direction:column;
+            min-height:100vh;
+            color:#fff;
+        }
+
+        /* Navigation (glass effect) */
+        nav {
+            background: rgba(0, 64, 128, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding:12px;
+            text-align:center;
+        }
+        nav a {
+            color:white;
+            margin:0 12px;
+            text-decoration:none;
+            font-weight:bold;
+        }
+        nav a:hover { text-decoration:underline; }
+
+        /* Centered glass login box */
+        .container { 
+            width: 90%;              /* Makes it responsive */
+            max-width: 500px;        /* Box not too wide */
+            margin: 60px auto;       /* Top and bottom spacing */
+            padding: 40px 35px;      /* Inner spacing */
+            background: rgba(255,255,255,0.15); 
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius:20px; 
+            border:1px solid rgba(255,255,255,0.3);
+            box-shadow:0 6px 30px rgba(0,0,0,0.35);
+            color:#fff;
+        }
+
+        h2 { 
+            text-align:center; 
+            color:#fff; 
+            margin-bottom:25px; 
+            font-weight:bold;
+        }
+
+        label { display:block; margin:10px 0 5px; }
+        input { 
+            width:100%; 
+            padding:12px; 
+            margin-bottom:15px; 
+            border-radius:8px; 
+            border:1px solid rgba(255,255,255,0.4); 
+            background: rgba(255,255,255,0.2); 
+            color:#fff;
+        }
+        input::placeholder { color:#eee; }
+
+        .btn { 
+            width:100%; 
+            background:#004080; 
+            color:white; 
+            padding:12px; 
+            border:none; 
+            border-radius:8px; 
+            cursor:pointer; 
+            font-weight:bold;
+            transition: 0.3s;
+        }
+        .btn:hover { background:#002b5c; }
+
+        .reset-btn {
+            width:100%;
+            margin-top:12px;
+            background:#008000;
+            color:white;
+            padding:12px;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;
+            font-weight:bold;
+            transition:0.3s;
+        }
+        .reset-btn:hover { background:#006400; }
+
+        .links { text-align:center; margin-top:15px; }
+        .links a { color:#fff; text-decoration:none; font-weight:bold; }
+        .links a:hover { text-decoration:underline; }
+
+        /* Footer (glass effect) */
+        footer {
+            background: rgba(0, 64, 128, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color:white;
+            text-align:center;
+            padding:15px;
+            margin-top:auto;
+            border-top: 1px solid rgba(255,255,255,0.3);
+        }
+        footer a {
+            color:white;
+            margin:0 5px;
+            text-decoration:none;
+        }
+        footer a:hover { text-decoration:underline; }
+
+        /* Mobile friendly */
+        @media (max-width: 500px){
+            .container { padding:30px 20px; }
+            input, .btn, .reset-btn { padding:10px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <a href="home.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="admissions.html">Admissions</a>
+    <a href="academics.html">Academics</a>
+    <a href="contact.html">Contact</a>
+    <a href="register.html">Register</a>
+    <a href="reference.html">Reference</a>
+    <a href="staff.html">Staff</a>
+        <a href="login.html">Student Portal</a>
+</nav>
+
+<!-- Login form -->
+<div class="container">
+    <h2>Student Login</h2>
+    <form onsubmit="loginStudent(event)">
+        <label>Full Name:</label>
+        <input type="text" id="fullName" placeholder="Enter full name" required>
+
+        <label>Student ID:</label>
+        <input type="text" id="studentID" placeholder="Enter student ID" required>
+
+        <label>Password:</label>
+        <input type="password" id="password" placeholder="Enter password" required>
+
+        <button type="submit" class="btn">Login</button>
+    </form>
+
+    <button onclick="resetStudents()" class="reset-btn">🔄 Reset Students</button>
+
+    <div class="links">
+        <p><a href="register.html">Register New Student</a></p>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+   <marquee> <p>
+        &copy; 2025 Nitro Ridge School. All rights reserved. 
+        <a href="https://wa.me/233257346810" target="_blank">WhatsApp</a> | 
+        <a href="https://facebook.com" target="_blank">Facebook</a> | 
+        <a href="https://instagram.com" target="_blank">Instagram</a>
+    </p> </marquee>
+</footer>
+
+<script>
+function loginStudent(event){
+    event.preventDefault();
+    const name = document.getElementById("fullName").value.trim();
+    const id = document.getElementById("studentID").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const students = JSON.parse(localStorage.getItem("students")) || [];
+    const student = students.find(s => 
+        s.name.toLowerCase().trim() === name.toLowerCase() &&
+        s.studentID.trim() === id &&
+        s.password.trim() === password
+    );
+    if(student){
+        localStorage.setItem("currentStudent", JSON.stringify(student));
+        alert("✅ Login successful!");
+        window.location.href = "student-portal.html";
+    } else {
+        alert("❌ Invalid credentials. Try again.");
+    }
+}
+function resetStudents(){
+    localStorage.removeItem("students");
+    localStorage.removeItem("currentStudent");
+    alert("✅ Students list cleared. You can now register fresh accounts.");
+}
+</script>
+</body>
+</html>
